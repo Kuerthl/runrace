@@ -1,13 +1,13 @@
-package hu.gde.runnersdemo;
+package hu.kuerthl.runrace;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RunnersdemoApplication {
-
+public class RunRaceApplication {
+	public enum Sex{male, female;}
 	public static void main(String[] args) {
-		SpringApplication.run(RunnersdemoApplication.class, args);
+		SpringApplication.run(RunRaceApplication.class, args);
 	}
 
 }

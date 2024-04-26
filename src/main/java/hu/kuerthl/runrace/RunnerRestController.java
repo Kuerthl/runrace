@@ -1,4 +1,4 @@
-package hu.gde.runnersdemo;
+package hu.kuerthl.runrace;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,13 +12,15 @@ import java.util.List;
 public class RunnerRestController {
 
     @Autowired
-    private LapTimeRepository lapTimeRepository;
+    private RaceRepository raceRepository;
     private RunnerRepository runnerRepository;
+    private ResultRepository resultRepository;
 
     @Autowired
-    public RunnerRestController(RunnerRepository runnerRepository, LapTimeRepository lapTimeRepository) {
+    public RunnerRestController(RunnerRepository runnerRepository, RaceRepository raceRepository, ResultRepository resultRepository) {
         this.runnerRepository = runnerRepository;
-        this.lapTimeRepository = lapTimeRepository;
+        this.raceRepository = raceRepository;
+        this.resultRepository = resultRepository;
     }
 
     @GetMapping("/{id}")
@@ -26,7 +28,7 @@ public class RunnerRestController {
         return runnerRepository.findById(id).orElse(null);
     }
 
-    @GetMapping("/{id}/averagelaptime")
+/*    @GetMapping("/{id}/averagelaptime")
     public double getAverageLaptime(@PathVariable Long id) {
         RunnerEntity runner = runnerRepository.findById(id).orElse(null);
         if (runner != null) {
@@ -41,12 +43,12 @@ public class RunnerRestController {
             return -1.0;
         }
     }
-
+*/
     @GetMapping("")
     public List<RunnerEntity> getAllRunners() {
         return runnerRepository.findAll();
     }
-
+/*
     @PostMapping("/{id}/addlaptime")
     public ResponseEntity addLaptime(@PathVariable Long id, @RequestBody LapTimeRequest lapTimeRequest) {
         RunnerEntity runner = runnerRepository.findById(id).orElse(null);
@@ -55,7 +57,7 @@ public class RunnerRestController {
             lapTime.setTimeSeconds(lapTimeRequest.getLapTimeSeconds());
             lapTime.setLapNumber(runner.getLaptimes().size() + 1);
             lapTime.setRunner(runner);
-            lapTimeRepository.save(lapTime);
+            raceRepository.save(lapTime);
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Runner with ID " + id + " not found");
@@ -71,5 +73,5 @@ public class RunnerRestController {
         public void setLapTimeSeconds(int lapTimeSeconds) {
             this.lapTimeSeconds = lapTimeSeconds;
         }
-    }
+    }*/
 }

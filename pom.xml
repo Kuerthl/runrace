@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>hu.gde</groupId>
-	<artifactId>runnersdemo</artifactId>
+	<artifactId>runrace</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>runnersdemo</name>
 	<description>Demo project for GDE</description>
