@@ -1,4 +1,4 @@
-package hu.gde.runnersdemo;
+package hu.kuerthl.runrace;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ public class RunnerController {
     @Autowired
     private RunnerRepository runnerRepository;
     @Autowired
-    private LapTimeRepository lapTimeRepository;
+    private RaceRepository raceRepository;
     @GetMapping("/runners")
     public String getAllRunners(Model model) {
         List<RunnerEntity> runners = runnerRepository.findAll();
@@ -24,10 +24,10 @@ public class RunnerController {
         return "runners";
     }
 
-    @GetMapping("/runner/{id}")
+/*    @GetMapping("/runner/{id}")
     public String getRunnerById(@PathVariable Long id, Model model) {
         RunnerEntity runner = runnerRepository.findById(id).orElse(null);
-        RunnerService runnerService = new RunnerService(runnerRepository);
+        RunRaceService runnerService = new RunRaceService(runnerRepository);
         if (runner != null) {
             model.addAttribute("runner", runner);
             double averageLaptime = runnerService.getAverageLaptime(runner.getRunnerId());
@@ -66,6 +66,6 @@ public class RunnerController {
         }
         return "redirect:/runner/" + id;
     }
-
+*/
 }
 

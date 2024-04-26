@@ -1,22 +1,20 @@
-package hu.gde.runnersdemo;
+package hu.kuerthl.runrace;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class RunnerService {
+public class RunRaceService {
 
-    private final RunnerRepository runnerRepository;
+    private final RaceRepository raceRepository;
 
     @Autowired
-    public RunnerService(RunnerRepository runnerRepository) {
-        this.runnerRepository = runnerRepository;
+    public RunRaceService(RaceRepository raceRepository) {
+        this.raceRepository = raceRepository;
     }
 
-    public double getAverageLaptime(Long runnerId) {
-        RunnerEntity runner = runnerRepository.findById(runnerId).orElse(null);
+/*    public double getAverageLaptime(Long runnerId) {
+        RunnerEntity runner = raceRepository.findById(runnerId).orElse(null);
         if (runner != null) {
             List<LapTimeEntity> laptimes = runner.getLaptimes();
             int totalTime = 0;
@@ -28,5 +26,5 @@ public class RunnerService {
             // handle error when runner is not found
             return -1.0;
         }
-    }
+    }*/
 }

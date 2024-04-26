@@ -1,4 +1,4 @@
-package hu.gde.runnersdemo;
+package hu.kuerthl.runrace;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
