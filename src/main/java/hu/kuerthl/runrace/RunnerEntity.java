@@ -18,7 +18,7 @@ public class RunnerEntity {
     @Enumerated(STRING)
     private RunRaceApplication.Sex runnerSex;
     @OneToMany(mappedBy = "runnerId" )
-    private Set<ResultEntity> results;
+    private List<ResultEntity> results;
 
     public RunnerEntity() {
     }
@@ -55,7 +55,7 @@ public class RunnerEntity {
         this.runnerSex = runnerSex;
     }
 
-    public Set<ResultEntity> getResults() {
+    public List<ResultEntity> getResults() {
         return results;
     }
 }

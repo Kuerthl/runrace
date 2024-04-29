@@ -1,9 +1,8 @@
 package hu.kuerthl.runrace;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "races")
@@ -17,13 +16,13 @@ public class RaceEntity {
     @Column(name = "distance", nullable = false)
     private int distance;
     @OneToMany(mappedBy = "raceId" )
-    private Set<ResultEntity> results;
+    private List<ResultEntity> results;
 
-    public Long getId() {
+    public Long getRaceId() {
         return raceId;
     }
 
-    public void setId(Long id) {
+    public void setRaceId(Long id) {
         this.raceId = id;
     }
 
@@ -39,11 +38,11 @@ public class RaceEntity {
         return distance;
     }
 
-    public void setDistance(int Distance) {
+    public void setDistance(int distance) {
         this.distance = distance;
     }
 
-    public Set<ResultEntity> getResults() {
+    public List<ResultEntity> getResults() {
         return results;
     }
 

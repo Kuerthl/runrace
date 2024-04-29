@@ -1,26 +1,27 @@
 package hu.kuerthl.runrace;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/runner")
-public class RunnerRestController {
+@RequestMapping("/api/v1/races")
+public class RunRaceRestController {
 
     @Autowired
     private RaceRepository raceRepository;
     private RunnerRepository runnerRepository;
     private ResultRepository resultRepository;
+    private RaceController raceController;
 
     @Autowired
-    public RunnerRestController(RunnerRepository runnerRepository, RaceRepository raceRepository, ResultRepository resultRepository) {
+    public RunRaceRestController(RunnerRepository runnerRepository, RaceRepository raceRepository, ResultRepository resultRepository, RaceController raceController) {
         this.runnerRepository = runnerRepository;
         this.raceRepository = raceRepository;
         this.resultRepository = resultRepository;
+        this.raceController = raceController;
     }
 
     @GetMapping("/{id}")
@@ -45,8 +46,8 @@ public class RunnerRestController {
     }
 */
     @GetMapping("")
-    public List<RunnerEntity> getAllRunners() {
-        return runnerRepository.findAll();
+    public List<RaceEntity> getAllRaces() {
+        return raceRepository.findAll();
     }
 /*
     @PostMapping("/{id}/addlaptime")
@@ -74,4 +75,31 @@ public class RunnerRestController {
             this.lapTimeSeconds = lapTimeSeconds;
         }
     }*/
+
+    public static class AddRaceRequest{
+        private String name;
+        private int distance;
+
+        public String getName(){
+            return name;
+        }
+
+        public void setName(String name){
+            this.name = name;
+        }
+
+        public int getDistance() {
+            return distance;
+        }
+
+        public void setDistance(int distance) {
+            this.distance = distance;
+        }
+    }
+
+    @PostMapping("/addRace")
+    public ResponseEntity addRace(@RequestBody AddRaceRequest addRaceRequest) {
+        raceController.addRace(addRaceRequest.getName(),addRaceRequest.getDistance());
+        return ResponseEntity.ok().build();
+    }
 }
