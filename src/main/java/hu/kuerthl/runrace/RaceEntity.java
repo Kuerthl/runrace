@@ -1,5 +1,6 @@
 package hu.kuerthl.runrace;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class RaceEntity {
     private String raceName;
     @Column(name = "distance", nullable = false)
     private int distance;
+    @JsonIgnore
     @OneToMany(mappedBy = "raceId" )
     private List<ResultEntity> results;
 

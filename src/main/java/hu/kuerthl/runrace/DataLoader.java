@@ -44,6 +44,20 @@ public class DataLoader implements CommandLineRunner {
         race2.setDistance(10);
 
         raceRepository.save(race2);
+
+        ResultEntity result1 = new ResultEntity();
+        result1.setRaceId(race1);
+        result1.setRunnerId(runner1);
+        result1.setRunTime(7);
+
+        resultRepository.save(result1);
+
+        ResultEntity result2 = new ResultEntity();
+        result2.setRaceId(race1);
+        result2.setRunnerId(runner2);
+        result2.setRunTime(9);
+
+        resultRepository.save(result2);
     }
 }
 

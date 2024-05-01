@@ -1,5 +1,6 @@
 package hu.kuerthl.runrace;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ public class RunnerEntity {
     private int runnerAge;
     @Enumerated(STRING)
     private RunRaceApplication.Sex runnerSex;
+    @JsonIgnore
     @OneToMany(mappedBy = "runnerId" )
     private List<ResultEntity> results;
 

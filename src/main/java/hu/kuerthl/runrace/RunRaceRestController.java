@@ -99,7 +99,13 @@ public class RunRaceRestController {
 
     @PostMapping("/addRace")
     public ResponseEntity addRace(@RequestBody AddRaceRequest addRaceRequest) {
-        raceController.addRace(addRaceRequest.getName(),addRaceRequest.getDistance());
+        raceController.addRaceInternal(addRaceRequest.getName(),addRaceRequest.getDistance());
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/getResults")
+    public List<ResultEntity> getAllResults() {
+        return resultRepository.findAll();
+    }
+
 }
