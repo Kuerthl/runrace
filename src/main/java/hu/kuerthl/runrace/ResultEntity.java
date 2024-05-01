@@ -24,4 +24,28 @@ public class ResultEntity {
     public Long getResultId() {
         return resultId;
     }
+
+    public RaceEntity getRaceId() {
+        return raceId;
+    }
+
+    public RunnerEntity getRunnerId() {
+        return runnerId;
+    }
+
+    public int getRunTime() {
+        return runTime;
+    }
+
+    public void setRaceId(RaceEntity raceId) {
+        this.raceId = raceId;
+    }
+
+    public void setRunnerId(RunnerEntity runnerId) {
+        this.runnerId = runnerId;
+    }
+
+    public void setRunTime(int runTime) {
+        this.runTime = runTime;
+    }
 }
