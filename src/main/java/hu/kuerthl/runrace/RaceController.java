@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,22 +51,33 @@ public class RaceController {
         }
         return raceAdded;
     }
+
     @GetMapping("/race/{id}")
     public String getRaceById(@PathVariable Long id, Model model) {
         RaceEntity race = raceRepository.findById(id).orElse(null);
         if (race != null) {
             model.addAttribute("raceName", race.getRaceName());
-            List<ResultEntity> raceResults = resultRepository.findByRaceId(race);
-            List<RunnerRaceResult> runnersRaceResult= new ArrayList<>();
-            for (ResultEntity i:raceResults){
-                Optional<RunnerEntity> runner;
-                runner = runnerRepository.findById(i.getRunnerId().getRunnerId());
-                runnersRaceResult.add(new RunnerRaceResult(runner.get().getRunnerId(),runner.get().getRunnerName(),i.getRunTime()));
-            }
-            model.addAttribute("result",runnersRaceResult);
+            model.addAttribute("result", getRaceByIdInternal(race));
             return "race";
         } else {
             return "error";
         }
+    }
+
+    public List<RunnerRaceResult> getRaceByIdInternal(RaceEntity race) {
+        List<RunnerRaceResult> runnersRaceResult = new ArrayList<>();
+        if (race != null) {
+            List<ResultEntity> raceResults = resultRepository.findByRace(race);
+            for (ResultEntity i : raceResults) {
+                Optional<RunnerEntity> runner;
+                runner = runnerRepository.findById(i.getRunner().getRunnerId());
+                runnersRaceResult.add(new RunnerRaceResult(runner.get().getRunnerId(), runner.get().getRunnerName(), i.getRunTime()));
+            }
+            runnersRaceResult.sort((r1, r2) -> {
+                if (r1.runTime == r2.runTime) return 0;
+                return r1.runTime < r2.runTime ? -1 : 1;
+            });
+        }
+        return runnersRaceResult;
     }
 }

@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "6954a7d2-1f71-48c1-a5c7-1249e644a2b9",
+		"name": "runrace",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17313721"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/api/v1/races/addRunner",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "e4983d98-ef61-49d7-83a0-1c30857007bc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"New Runner\", \"age\":30, \"sex\":\"male\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/races/addRunner",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"races",
+						"addRunner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/races/getRunners",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/races/getRunners",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"races",
+						"getRunners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/races/getRaceRunners/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/races/getRaceRunners/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"races",
+						"getRaceRunners",
+						"1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/races/updateRace",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "650acc47-feb3-440b-a6e2-c9e3e65f68fb"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\"name\":\"Renamed Race\",\"distance\":1024}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/races/updateRace",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"races",
+						"updateRace"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/races/addResult",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "7c6b7475-25b7-47d0-9db6-61ac4d906a18"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"raceId\":1,\"runnerId\":1,\"runTime\":1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/races/addResult",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"races",
+						"addResult"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/v1/races/getAverageTime/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/races/getAverageTime/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"races",
+						"getAverageTime",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -11,12 +11,12 @@ public class ResultEntity {
     private Long resultId;
 
     @ManyToOne
-    @JoinColumn(name = "race_id")
-    private RaceEntity raceId;
+    @JoinColumn(name = "race")
+    private RaceEntity race;
 
     @ManyToOne
-    @JoinColumn(name = "runner_id")
-    private RunnerEntity runnerId;
+    @JoinColumn(name = "runner")
+    private RunnerEntity runner;
 
     @Column(name = "run_time", nullable = false)
     private int runTime;
@@ -25,24 +25,24 @@ public class ResultEntity {
         return resultId;
     }
 
-    public RaceEntity getRaceId() {
-        return raceId;
+    public RaceEntity getRace() {
+        return race;
     }
 
-    public RunnerEntity getRunnerId() {
-        return runnerId;
+    public RunnerEntity getRunner() {
+        return runner;
     }
 
     public int getRunTime() {
         return runTime;
     }
 
-    public void setRaceId(RaceEntity raceId) {
-        this.raceId = raceId;
+    public void setRace(RaceEntity race) {
+        this.race = race;
     }
 
-    public void setRunnerId(RunnerEntity runnerId) {
-        this.runnerId = runnerId;
+    public void setRunner(RunnerEntity runner) {
+        this.runner = runner;
     }
 
     public void setRunTime(int runTime) {

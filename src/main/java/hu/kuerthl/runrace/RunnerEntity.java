@@ -19,7 +19,7 @@ public class RunnerEntity {
     @Enumerated(STRING)
     private RunRaceApplication.Sex runnerSex;
     @JsonIgnore
-    @OneToMany(mappedBy = "runnerId" )
+    @OneToMany(mappedBy = "runner" )
     private List<ResultEntity> results;
 
     public RunnerEntity() {
