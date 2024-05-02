@@ -17,7 +17,7 @@ public class RaceEntity {
     @Column(name = "distance", nullable = false)
     private int distance;
     @JsonIgnore
-    @OneToMany(mappedBy = "raceId" )
+    @OneToMany(mappedBy = "race" )
     private List<ResultEntity> results;
 
     public Long getRaceId() {
